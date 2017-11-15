@@ -7,9 +7,25 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <header>
+  <!-- user_signed_in? はユーザがログインしているか調べるdeviseのHelperメソッド -->
+          <%= link_to 'トップ', root_path %>｜
+          <% if user_signed_in? %> 
+            <!-- current_user は現在ログインしているUserオブジェクトを返すdeviseのHelperメソッド -->
+            <!-- *_path はUserモデルを作成したときに、
+              deviseにより自動で作成されてますので、rake routesで確認できます -->
+            Logged in as <%= current_user.email %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>｜
+            <%= link_to "ポスト一覧", products_path %>｜
+            <%= link_to 'マイページ', user_path(current_user) %>
+          <% else %>
+            <%= link_to "サインイン", new_user_registration_path %> |
+            <%= link_to "ログイン", new_user_session_path %>
+          <% end %>
+  </header>
+<%= yield %>
 
   <body>
-  	<%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-    <%= yield %>
+  	
   </body>
 </html>

@@ -1,0 +1,17 @@
+	<ul>  
+      <li>  
+        <%= link_to user_path(@user) do %>
+          投稿数 
+          <%= @user.products.count %>
+        <% end %>  
+      </li>  
+  	</ul>
+
+    <% @user.products.each do |product| %>
+      
+      <ul>  
+      	<li><%= link_to product.name, product_path(product) %></li>
+        <li><%= attachment_image_tag product, :image, :fill, 200, 200, format: "jpg" %></li>
+        <li><%= product.price %></li>
+      </ul>
+    <% end %>

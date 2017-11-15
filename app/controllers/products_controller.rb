@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :correct_user, only: [:edit, :update]
 
   # GET /products
   # GET /products.json
@@ -11,12 +13,12 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.find_by(id: params[:id])
-  end
+    @another_image = AnotherImage.new
+    end
 
   # GET /products/new
   def new
     @product = Product.new
-    @product.product_images.build
   end
 
   # GET /products/1/edit
@@ -28,8 +30,9 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-    @product.save
-    redirect_to products_path
+    @product.user_id = current_user.id
+    # @product.save
+    # redirect_to products_path
 
     respond_to do |format|
       if @product.save
@@ -74,7 +77,14 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :price, :description, product_images_images: [])
+      params.require(:product).permit(:name, :price, :description, :user_id, :image)
     end
+    def correct_user
+          product = Product.find(params[:id])
+          if current_user.id != product.user.id
+            redirect_to root_path
+          end
+        end
+    
 
 end
