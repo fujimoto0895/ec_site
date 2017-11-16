@@ -34,7 +34,7 @@ gem 'cancancan'
 gem 'rails_admin'
 gem "refile", github: 'refile/refile', require: "refile/rails"
 gem "refile-mini_magick", github: 'refile/refile-mini_magick'
-gem 'breadcrumbs_on_rails'
+gem "gretel"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
