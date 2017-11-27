@@ -32,8 +32,8 @@ class AnotherImagesController < ApplicationController
 
 
 	def destroy
-		@product = Post.find(params[:product_id])
-		@another_image = @product.another_image.find(params[:image_id])
+		@product = Product.find(params[:product_id])
+		@another_image = @product.another_images.find(params[:id])
 		@another_image.destroy
 		redirect_to product_path(@product)
 	end
