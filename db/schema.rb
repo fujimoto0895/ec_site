@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171126095018) do
+ActiveRecord::Schema.define(version: 20171129132419) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -36,9 +36,33 @@ ActiveRecord::Schema.define(version: 20171126095018) do
     t.string "image_id"
   end
 
+  create_table "cart", force: :cascade do |t|
+    t.string "name"
+    t.string "mail"
+    t.string "state"
+    t.string "city"
+    t.string "street_adress"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "product_images", force: :cascade do |t|
     t.integer "product_id"
     t.string "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "product_statuses", force: :cascade do |t|
+    t.boolean "is_purchased"
+    t.string "product_id"
+    t.string "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -51,6 +75,14 @@ ActiveRecord::Schema.define(version: 20171126095018) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.string "image_id"
+    t.string "category_id"
+  end
+
+  create_table "user_statuses", force: :cascade do |t|
+    t.string "buyer_id"
+    t.string "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
