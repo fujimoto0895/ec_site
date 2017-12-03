@@ -1,12 +1,16 @@
 
 
 <%= form_for(product) do |f| %>
+
+
   <p>商品名：<%= f.text_field :name %></p>
+  	<%= f.label :"category" %><br>
+  <%= f.select :category, [["育てやすい", "育てやすい"], ["育てるのが難しい", "育てるのが難しい"], ["安い", "安い"], ["高い", "高い"]] %>
   <p>価格：¥<%= f.text_field :price %></p>
   <p>商品説明文：<%= f.text_field :description %></p>
   <p>商品画像：<%= f.label :image_id %></p>
   <p><%= f.attachment_field :image %></p>
-  			 
-  
-  <%= f.submit %>
+
+  <%= f.submit  %>
 <% end %>
+

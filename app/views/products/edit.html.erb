@@ -1,4 +1,23 @@
 <% breadcrumb :edit_product, @product %>
 <h1>販売商品編集</h1>
+<%= form_for(product) do |f| %>
+<div class="product-tags-field">
+    <%= f.label "カテゴリ" %>
+    <ul id="product-tags">
+    </ul>
+    <%= hidden_field_tag :category_hidden,@category_list %>
+</div>
+<div>
+  <p>商品名：<%= f.text_field :name %></p>
+  <p>価格：¥<%= f.text_field :price %></p>
+  <p>商品説明文：<%= f.text_field :description %></p>
+  <p>商品画像：<%= f.label :image_id %></p>
+  <p><%= f.attachment_field :image %></p>
+
+  
+	<%= f.submit "更新" %>
+  	<% end %>
+</div>
+
 
 <%= render partial: "form", locals: { product: @product } %>

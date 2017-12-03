@@ -1,0 +1,12 @@
+  <h1>購入者入力情報</h1>
+  <%= form_for(@cart) do |f| %>
+    <p>氏名：<%= f.text_field :name %></p>
+    <p>電話番号：<%= f.text_field :tel %></p>
+    <p>メールアドレス：<%= f.text_field :mail %></p>
+    <p>住所：</p>
+    <p><%= f.text_field :state %></p>
+    <p><%= f.text_field :city %></p>
+    <p><%= f.text_field :street_adreess %></p>
+ 
+  	<%= f.submit "注文確定" %>
+<% end %>

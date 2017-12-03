@@ -1,11 +1,12 @@
-class CreateBuyers < ActiveRecord::Migration[5.1]
+class CreateCarts < ActiveRecord::Migration[5.1]
   def change
-    create_table :buyers do |t|
+    create_table :carts do |t|
       t.string :name
       t.string :mail
       t.string :state
       t.string :city
-      t.string :street_adress
+      t.string :street_adreess
+      t.string :tel
 
       t.timestamps
     end

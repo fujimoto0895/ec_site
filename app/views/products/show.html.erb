@@ -24,6 +24,12 @@
 
 
 <br>
+<% if current_user.id  %>
+<%= link_to '注文する', carts_new_path %>
+<% else %>
+<% redirect_to "/users/sign_up" %>
+
+<% end %>
 
 <br>
 <br>

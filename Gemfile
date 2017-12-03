@@ -37,6 +37,7 @@ gem "refile-mini_magick", github: 'refile/refile-mini_magick'
 gem "gretel"
 gem 'seed-fu', '~> 2.3'
 gem 'kaminari'
+gem 'jquery-ui-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
