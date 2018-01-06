@@ -1,6 +1,11 @@
-class Admins::RegistrationsController < Devise::RegistrationsController
+class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  def new
+    @user = User.new
+    @noadmin = User.where('admin = ?', true).empty?
+  end
+
 
   # GET /resource/sign_up
   # def new

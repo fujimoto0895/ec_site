@@ -1,6 +1,9 @@
 class Category < ApplicationRecord
-  belongs_to :user
-  validates :name,presence:true,length:{maximum:50}
-  has_many :articles, through: :articles_categories
-  has_many :articles_categories, dependent: :destroy
+  has_many :products, dependent: :destroy
+  # scope :from_category, -> (category_id)  { 
+  # 	where(id: product_ids = ProductCategory.where(
+  # 		category_id: category_id
+  # 		).select(:product_id)
+  # 	)
+  # }
 end

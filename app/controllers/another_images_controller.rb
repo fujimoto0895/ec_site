@@ -1,24 +1,5 @@
 class AnotherImagesController < ApplicationController
 
-  # def index
-    # @another_image = AnotherImage.all
-  # end
-
-    # def show
-    # @another_image = AnotherImage.new
-    # end
-
-  # GET /products/new
-  # def new
-  #   @another_image = AnotherImage.new
-  # end
-
-  # GET /products/1/edit
-  # def edit
-  #   @another_image = AnotherImage.find_by(image_id: params[:id])
-  # end
-
-
   def create
   	@product = Product.find(params[:product_id])
     @another_image = AnotherImage.new(another_image_params)
@@ -41,7 +22,8 @@ class AnotherImagesController < ApplicationController
   private
   def another_image_params
       params.require(:another_image).permit(:image)
-   end
+  end
+
 end
 
 

@@ -8,6 +8,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Category</th>
       <th>Image</th>
       <th>Price</th>
       <th>Description</th>
@@ -20,6 +21,7 @@
     <% @products.each do |product| %>
       <tr>
        <td><%= link_to product.name, product_path(product) %></td>
+       <td><%= product.category.name %></td>
        <td><%= attachment_image_tag product, :image, :fill, 100, 100, format: "jpg" %></td>
         <td><%= product.price %></td>
         <td><%= product.description %></td>

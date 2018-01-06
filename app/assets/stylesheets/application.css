@@ -15,3 +15,14 @@
  *= require tagit.ui-zendesk
  *= require_self
  */
+textarea{
+	height: 160px;
+}
+
+
+body{
+	font-family: Verdana, sans-serif;
+	font-size: 15px;
+	text-decoration: none;
+}
+

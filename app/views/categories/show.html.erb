@@ -1,0 +1,6 @@
+<%# breadcrumb :category_product, @product %>
+
+<% @category.products.each do |product| %>
+		<%= link_to product.name, product %><br>
+<% end %>
+<%= paginate(@categories) %>

@@ -15,29 +15,26 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find_by(id: params[:id])
     @another_image = AnotherImage.new
+    
   end
 
   # GET /products/new
   def new
     @product = Product.new
+
   end
 
   # GET /products/1/edit
   def edit
     @product = Product.find_by(id: params[:id])
+    
   end
 
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
+    @product = Product.create(product_params)
     @product.user_id = current_user.id
-
-      # render 'products/new'
-    # end
-
-    # @product.save
-    # redirect_to products_path
 
     respond_to do |format|
       if @product.save
@@ -52,10 +49,7 @@ class ProductsController < ApplicationController
 
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
-  def edit
-    @product= Product.find(params[:id])
-    @category_list = @product.categories.pluck(:name).join(",")
-  end
+  
   def update
     @product= Product.find(params[:id])
     respond_to do |format|
@@ -72,7 +66,7 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
-    #@another_image.destroy
+    @product = Product.find(params[:id])
     @product.destroy
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
@@ -88,8 +82,9 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :price, :description, :user_id, :image, :category)
+      params.require(:product).permit(:name, :price, :description, :user_id, :image, :category_id)
     end
+    
     def correct_user
           product = Product.find(params[:id])
           if current_user.id != product.user.id
@@ -97,6 +92,7 @@ class ProductsController < ApplicationController
           end
     end
     
+   
 end
 
 

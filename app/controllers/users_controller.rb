@@ -1,4 +1,10 @@
 class UsersController < ApplicationController
+  
+  def new
+    @user = User.new
+    @noadmin = User.where('admin = ?', true).empty?
+  end
+
   def index
   	@users = User.all
   end
